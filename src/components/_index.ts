@@ -28,9 +28,7 @@ export { default as Row } from "./warpper-element/Row/Row";
 export { default as WrapperList } from "./warpper-element/WrapperList/index";
 export { default as List } from "./warpper-element/List/index";
 
-
 // pure components
-export {default as Input } from './pure-components/Input/index' 
-export {default as Button } from './pure-components/Button/index' 
-
-
+export { default as Input } from "./pure-components/Input/index";
+export { default as Button } from "./pure-components/Button/index";
+export { default as DarkModeBtn } from "./pure-components/DarkLightBtn/index";

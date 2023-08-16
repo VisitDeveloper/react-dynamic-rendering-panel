@@ -1,4 +1,4 @@
-'use client';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC, ReactNode } from 'react';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -8,6 +8,12 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   imgright?: ReactNode | string;
   imgleft?: ReactNode | string;
   error?: string | boolean;
+  labelLayoutStatus?:  'vertical' | 'horizental' ;
+}
+
+const labelLayout  = {
+  horizental :'flex flex-row items-center',
+  vertical :''
 }
 
 const sizeMap = {
@@ -16,11 +22,6 @@ const sizeMap = {
   large: 'py-4 text-xl'
 };
 
-const outerSizeMap = {
-  small: 'border-none',
-  medium: 'border rounded-full py-1 bg-[inherit] border-gray-m-200',
-  large: 'bg-white shadow-primary rounded-full px-4'
-};
 
 const defaultStyle = 'w-full bg-inherit px-4 outline-none';
 
@@ -32,13 +33,14 @@ const Input: FC<InputProps> = ({
   imgright,
   inputSize = 'medium',
   imgleft,
+  labelLayoutStatus= 'vertical',
   ...props
 }) => {
 
   return (
     <>
-      <div className={`h-fit ${outerSizeMap[inputSize]} ${outerClassName}`}>
-        <label>
+      <div className={`h-fit ${outerClassName}`}>
+        <label className={`${labelLayout[labelLayoutStatus]}`}>
           {title ? <span className="pr-2 text-lg">{title}</span> : <></>}
           <div className=" flex  w-full flex-row items-center overflow-hidden px-2 py-1 ">
             {imgright ?? <></>}

@@ -1,10 +1,9 @@
-import Input from 'components/Input'
+import Main from "page"
 
 function App() {
   return (
-    <div className="text-Warning600">
-      این یک تست میباشد  
-    <Input/>
+    <div>
+       <Main/>
     </div>
   )
 }
