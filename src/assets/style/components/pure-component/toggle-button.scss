@@ -1,0 +1,56 @@
+.toggle-button-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    width: 100%;
+    gap: 0 10px;
+    .toggle-button-switch {
+      position: relative;
+      display: inline-block;
+      width: 38px;
+      height: 22px;
+      .toggle-button-input:checked + .toggle-button-slider:before {
+        -webkit-transform: translateX(14px);
+        -ms-transform: translateX(14px);
+        transform: translateX(14px);
+      }
+      .toggle-button-input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .toggle-button-slider {
+        @include button-background-color-gradiant(to right, #e5e8ef, #e5e8ef);
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        &.active {
+          @include button-background-color-gradiant(to right, #0176ea, #1845ac);
+        }
+        &::before {
+          position: absolute;
+          content: "";
+          height: 14px;
+          width: 14px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+        }
+        &.round {
+          border-radius: 34px;
+        }
+        &.round::before {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+  

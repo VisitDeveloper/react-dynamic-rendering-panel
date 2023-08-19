@@ -1,3 +1,4 @@
+@import './style/main.scss';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
