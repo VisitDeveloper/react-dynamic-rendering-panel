@@ -1,5 +1,4 @@
-import ToggleButton from "@/components/pure-components/ToggleButton";
-import { DarkModeBtn, Input } from "components/_index";
+import { DarkModeBtn, Input , Switch, SwitchCustom} from "components/_index";
 import { useState } from "react";
 
 function Main() {
@@ -16,11 +15,24 @@ function Main() {
         className="border-[1px] border-solid border-[#000] dark:border-[#fff] rounded-xl h-10"
       />
 
-      <ToggleButton
+      <Switch
         isToggle={isToggle}
         onToggleChange={() => setIsToggle(!isToggle)}
         title="test"
       />
+
+      <SwitchCustom
+        isToggle={isToggle} 
+        onChangeCheckBox={() => setIsToggle(!isToggle)} 
+        title="testtt" 
+        labelStatus="horizental"
+        classNameLabel="text-2xl"
+        className="gap-2"
+       />
+       
+       <div className="text-2xl">
+
+       </div>
     </div>
   );
 }

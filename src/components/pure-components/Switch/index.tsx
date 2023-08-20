@@ -4,7 +4,7 @@ interface ToggleButtonProps {
     onToggleChange: (isToggle: boolean) => void;
   }
   
-  const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
+  const Switch = (props: ToggleButtonProps): JSX.Element => {
     return (
       <div className="toggle-button-wrapper">
         <span className="toggle-button-title">{props.title} :</span>
@@ -14,10 +14,12 @@ interface ToggleButtonProps {
             className="toggle-button-input"
             checked={props.isToggle}
             onChange={() => props.onToggleChange(!props.isToggle)}
+           
           />
-          <span
+          <span 
             className={`toggle-button-slider round ${
               props.isToggle ? "active" : ""
+              // lg:[&]:bg-[red]
             }`}
           />
         </label>
@@ -25,5 +27,5 @@ interface ToggleButtonProps {
     );
   };
   
-  export default ToggleButton;
+  export default Switch;
   
