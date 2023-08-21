@@ -1,4 +1,5 @@
 import { DarkModeBtn, Input , Switch, SwitchCustom} from "components/_index";
+import { Moon , Sun1 } from "iconsax-react";
 import { useState } from "react";
 
 function Main() {
@@ -22,13 +23,40 @@ function Main() {
       />
 
       <SwitchCustom
+        isRtl={false}
         isToggle={isToggle} 
         onChangeCheckBox={() => setIsToggle(!isToggle)} 
         title="testtt" 
         labelStatus="horizental"
-        classNameLabel="text-2xl"
         className="gap-2"
-       />
+        classNameLabel="text-2xl"
+        icon={isToggle ? <Sun1 size="12" color="#000" className="mt-1 ml-1"/> : <Moon size="12" color="#000" className="mt-1 ml-1"/>}
+        variant="simple"
+       /> 
+
+      <SwitchCustom
+        isRtl={false}
+        isToggle={isToggle} 
+        onChangeCheckBox={() => setIsToggle(!isToggle)} 
+        title="testtt" 
+        labelStatus="horizental"
+        className="gap-2"
+        classNameLabel="text-2xl"
+        icon={isToggle ? <Sun1 size="12" color="#fff" className="mt-1 ml-1"/> : <Moon size="12" color="#fff" className="mt-1 ml-1"/>}
+        variant="muiStyle"
+       /> 
+
+      <SwitchCustom
+        isRtl={false}
+        isToggle={isToggle} 
+        onChangeCheckBox={() => setIsToggle(!isToggle)} 
+        title="testtt" 
+        labelStatus="horizental"
+        className="gap-2"
+        classNameLabel="text-2xl"
+        icon={isToggle ? <Sun1 size="12" color="#fff" className="mt-1 ml-1"/> : <Moon size="12" color="#fff" className="mt-1 ml-1"/>}
+        variant="iosStyle"
+       /> 
        
        <div className="text-2xl">
 

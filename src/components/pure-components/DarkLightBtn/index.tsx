@@ -1,9 +1,11 @@
-"use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import SwitchCustom from "../SwitchCustom";
+import { Moon, Sun1 } from "iconsax-react";
 
 const DarkModeBtn = () => {
   const [mounted, setMounted] = useState(false);
+  const [toggleSwitch, setToggleSwitch] = useState<boolean>(false);
   const { systemTheme, theme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -16,27 +18,33 @@ const DarkModeBtn = () => {
 
   const currentTheme = theme === "system" ? systemTheme : theme;
 
+
+
   return (
     <div>
-      {currentTheme === "dark" ? (
-        <div
-          className="h-6 w-6 cursor-pointer text-yellow-400"
-          onClick={() => {
+      
+      <SwitchCustom
+        isRtl={false}
+        isToggle={toggleSwitch}
+        onChangeCheckBox={() => {
+          if (toggleSwitch) {
+            setToggleSwitch(false);
             setTheme("light");
-          }}
-        >
-          lightss
-        </div>
-      ) : (
-        <div
-          className="h-6 w-6 cursor-pointer text-slate-700"
-          onClick={() => {
+          } else if (!toggleSwitch) {
+            setToggleSwitch(true);
             setTheme("dark");
-          }}
-        >
-          darks
-        </div>
-      )}
+          }
+        }}
+        classNameCircle={`${currentTheme === 'dark' ? '!bg-[#212121]' :'!bg-[#fff]'}`}
+        classNameInput={`${currentTheme === 'dark' ? '!bg-[#fff]' :'!bg-[#ebedf0]'}`}
+        icon={
+          toggleSwitch ? (
+            <Sun1 size="14" color={`${currentTheme === 'dark' ? '#fff' :'yellow'}`} className="mt-[3px] ml-[3px]" />
+          ) : (
+            <Moon size="14" color="#000" className="mt-[3px] ml-[3px]" />
+          )
+        }
+      />
     </div>
   );
 };

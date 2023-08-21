@@ -1,28 +1,73 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { JSX } from "react";
 import styled from "styled-components";
 
 type LabelStatus = "vertical" | "horizental";
-
+type Variant = 'simple' | 'muiStyle' | 'iosStyle'
 interface SwitchCustomProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   title?: string;
   isToggle: boolean;
   labelStatus?: LabelStatus;
-  onChangeCheckBox?:() => void ;
+  onChangeCheckBox?: () => void;
   className?: string;
-  classNameLabel?: string ;
-  classNameInput?:string;
+  classNameLabel?: string;
+  classNameInput?: string;
+  classNameCircle ?: string;
+  icon?: JSX.Element;
+  isRtl ?: boolean;
+  variant?: Variant
 }
+
+// ios dark mode
+// #39393c
+// #fefefe
+
+// ios light mode
+// #64cb66
+// #fefefe
+
+
+
+ // width:20px;
+ // height : 20px;
+ // height : 40px;
+ // width:40px;
+ // background-color :#212121;
+ // top:-30% ;
+ // right :0 ;
+ // left : -30% ;
+ // bottom : 0;
+
 
 const SwitchCustom = (
   props: SwitchCustomProps
 ): JSX.Element | React.ReactNode => {
-  const { labelStatus = "vertical" } = props;
+  const {
+    labelStatus = "vertical",
+    className = "",
+    classNameLabel = "",
+    classNameInput = "",
+    classNameCircle = "",
+    isRtl ,
+    variant = 'simple'
+  } = props;
+
+  const styleVariant :Record<Variant , string> = {
+  simple :   'm-[5px] w-[20px] h-[20px] top-0 right-0 bottom-0 left-0 bg-[#212121]',
+  muiStyle : 'm-[5px] w-[30px] h-[30px] top-[-45%] right-0 bottom-0 left-[-30%] bg-[#212121]',
+  iosStyle : 'm-[2px] w-[25px] h-[25px] top-0 right-0 bottom-0 left-0 bg-[#fefefe] shadow-md'
+}
+
   return (
-    <ContainerSwitchCustom labelStatus={labelStatus} isToggle={props.isToggle} className={`${props.className}`}>
-      <label className={`${props.classNameLabel}`}>
-        {props.title}
-      </label>
+    <ContainerSwitchCustom
+      isRtl={isRtl}
+      labelStatus={labelStatus}
+      isToggle={props.isToggle}
+      className={`${className}`}
+      variant={variant}
+    >
+      <label className={`${classNameLabel}`}>{props.title}</label>
       <input
         id={props.id}
         type="checkbox"
@@ -31,8 +76,13 @@ const SwitchCustom = (
         hidden={true}
         {...props}
       />
-      <div className={`wrap ${props.classNameInput}`} onClick={props.onChangeCheckBox}>
-        <span className="circle" />
+      <div
+        className={`wrap ${classNameInput} ${variant === 'iosStyle' && props.isToggle === true  ? 'bg-[#64cb66]' : '!bg-[#ddd]'}`}
+        onClick={props.onChangeCheckBox}
+      >
+        <span className={`circle shadow-md ${styleVariant[variant]} ${classNameCircle}`} >
+          {props.icon}
+        </span>
       </div>
     </ContainerSwitchCustom>
   );
@@ -42,6 +92,8 @@ export default SwitchCustom;
 const ContainerSwitchCustom = styled.div<{
   labelStatus?: LabelStatus;
   isToggle: boolean;
+  isRtl ?: boolean;
+  variant?: Variant
 }>(
   (props) => `
     
@@ -52,31 +104,22 @@ const ContainerSwitchCustom = styled.div<{
         .wrap{
             cursor:pointer;
             margin :10px;
-            width:50px;
-            height:30px;
+            width:${props.variant === 'muiStyle' ? '40px': '50px'};
+            height:${props.variant === 'muiStyle' ? '20px': '30px'};
             position:relative ;
-            background-color : #000;
             border-radius :30px;
             .circle {
-                margin: 5px 0;
                 position : absolute ;
-                background-color :#F00;
                 border-radius : 50%;
-                height : 20px;
-                width:20px;
-                top:0 ;
-                right :0 ;
-                left : 0 ;
-                bottom : 0;
                 transition : 0.5s;
                 -webkit-transform:${
-                  props.isToggle ? "translateX(30px)" : "translateX(0)"
+                  props.isToggle ? props.isRtl ?  `translateX(${props.variant === 'muiStyle' ? '-25px' : '-20px'})` :   `translateX(${props.variant === 'muiStyle' ? '25px' : '20px'})` : "translateX(0)"
                 };
                 -ms-transform: ${
-                  props.isToggle ? "translateX(30px)" : "translateX(0)"
+                  props.isToggle ? props.isRtl ? `translateX(${props.variant === 'muiStyle' ? '-25px' : '-20px'})` :   `translateX(${props.variant === 'muiStyle' ? '25px' : '20px'})` : "translateX(0)"
                 };
                 transform: ${
-                  props.isToggle ? "translateX(30px)" : "translateX(0)"
+                  props.isToggle ? props.isRtl ? `translateX(${props.variant === 'muiStyle' ? '-30px' : '-20px'})` :   `translateX(${props.variant === 'muiStyle' ? '30px' : '20px'})` : "translateX(0)"
                 };
             }
         }
