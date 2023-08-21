@@ -3,7 +3,8 @@ import React, { JSX } from "react";
 import styled from "styled-components";
 
 type LabelStatus = "vertical" | "horizental";
-type Variant = 'simple' | 'muiStyle' | 'iosStyle'
+type Variant = 'simple' | 'muiStyle' | 'iosStyle';
+
 interface SwitchCustomProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   title?: string;
@@ -22,22 +23,6 @@ interface SwitchCustomProps
 // ios dark mode
 // #39393c
 // #fefefe
-
-// ios light mode
-// #64cb66
-// #fefefe
-
-
-
- // width:20px;
- // height : 20px;
- // height : 40px;
- // width:40px;
- // background-color :#212121;
- // top:-30% ;
- // right :0 ;
- // left : -30% ;
- // bottom : 0;
 
 
 const SwitchCustom = (
@@ -96,7 +81,6 @@ const ContainerSwitchCustom = styled.div<{
   variant?: Variant
 }>(
   (props) => `
-    
     display:flex;
     flex-direction:${props.labelStatus === "vertical" ? "column" : "row"};
     align-items:${props.labelStatus === "vertical" ? "baseline" : "center"}; ;
@@ -123,7 +107,5 @@ const ContainerSwitchCustom = styled.div<{
                 };
             }
         }
-        
-    
 `
 );
