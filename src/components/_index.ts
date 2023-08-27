@@ -33,3 +33,4 @@ export { default as Input } from "./pure-components/Input/index";
 export { default as Button } from "./pure-components/Button/index";
 export { default as DarkModeBtn } from "./pure-components/DarkLightBtn/index";
 export { default as SwitchCustom } from "./pure-components/SwitchCustom/index";
+export { default as SelectSimple } from './pure-components/Select/index'
