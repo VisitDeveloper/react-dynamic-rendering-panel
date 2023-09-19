@@ -1,11 +1,11 @@
-'use client'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { CSSProperties, useEffect, useState } from 'react'
 
 interface IPropsRippleNew {
 	color?: string
 	onClick?: (ev: React.MouseEvent<HTMLDivElement>) => void
 	className?: string
-	children: any
+	children: React.ReactNode | JSX.Element | React.ReactElement
 	duration?: number
 }
 

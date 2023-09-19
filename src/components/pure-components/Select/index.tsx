@@ -76,6 +76,6 @@ export default Select;
 
 const Container = styled.div(
   () => `
-
-`
+    
+  `
 );

@@ -1,10 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
-'use client';
 import React, { FC, ReactNode } from 'react';
 import Ripple from './ripple';
 
 const defaultStyle =
-  'outline-none text-lg flex flex-row gap-2 rounded-full items-center justify-center';
+  'outline-none text-lg flex flex-row gap-2 rounded-full items-center justify-center bg-[red]';
 
 export enum HasRipple {
   isRipple = 'isRipple',
@@ -93,5 +92,4 @@ const Button: FC<ButtonProps> = ({
     }
   }
 };
-
-export default Button;
+export default Button

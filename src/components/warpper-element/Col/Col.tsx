@@ -1,12 +1,19 @@
 import React from 'react'
 
+
+type Responsive = string;
 interface ColProps {
     children?: React.ReactNode | React.ReactElement | JSX.Element;
     colSpan: number ;
+    responsive : Responsive
   }
 
 export default function Col(props :ColProps) {
-    const {children , colSpan }= props
+    const {children , colSpan , responsive = ''}= props;
+
+    const getResponsive = (responsive : Responsive) =>{
+      return  `${responsive}:` 
+    }
 
     const getfindColSpan = (colSpan: number) =>
       colSpan === 1
@@ -36,28 +43,28 @@ export default function Col(props :ColProps) {
 
       const getMdColSpan = (colSpan: number) =>
       colSpan === 1
-      ? "md:col-span-1"
+      ? `${getResponsive(responsive)}col-span-1`
       : colSpan === 2
-      ? "md:col-span-2"
+      ? `${getResponsive(responsive)}col-span-2`
       : colSpan === 3
-      ? "md:col-span-3"
+      ? `${getResponsive(responsive)}col-span-3`
       : colSpan === 4
-      ? "md:col-span-4"
+      ? `${getResponsive(responsive)}col-span-4`
       : colSpan === 5
-      ? "md:col-span-5"
+      ? `${getResponsive(responsive)}col-span-5`
       : colSpan === 6
-      ? "md:col-span-6"
+      ? `${getResponsive(responsive)}col-span-6`
       : colSpan === 7
-      ? "md:col-span-7"
+      ? `${getResponsive(responsive)}col-span-7`
       : colSpan === 8
-      ? "md:col-span-8"
+      ? `${getResponsive(responsive)}col-span-8`
       : colSpan === 9
-      ? "md:col-span-9"
+      ? `${getResponsive(responsive)}col-span-9`
       : colSpan === 10
-      ? "md:col-span-10"
+      ? `${getResponsive(responsive)}col-span-10`
       : colSpan === 11
-      ? "md:col-span-11"
-      : "md:col-span-12";
+      ? `${getResponsive(responsive)}col-span-11`
+      : `${getResponsive(responsive)}col-span-12`;
 
       
 

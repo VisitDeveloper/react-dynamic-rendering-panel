@@ -1,7 +1,7 @@
 import {
   DarkModeBtn,
   Input,
-  SelectSimple,
+  Select,
   SwitchCustom,
 } from "components/_index";
 import { Moon, Sun1 } from "iconsax-react";
@@ -78,7 +78,7 @@ function Main() {
       <div className="text-2xl m-2"></div>
 
       <div>
-        <SelectSimple
+        <Select
           value={selected}
           onChange={(e) => setSelected(e.target.value)}
           groupOptions={[
@@ -103,7 +103,7 @@ function Main() {
         />
 
 
-        <SelectSimple
+        <Select
           value={selected}
           onChange={(e) => setSelected(e.target.value)}
           options={[
