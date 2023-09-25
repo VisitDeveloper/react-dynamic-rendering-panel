@@ -24,7 +24,7 @@
     "react-redux": "^8.1.2",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.0.7",
-    "switch-custom-design": "^0.1.3"
+    "switch-custom-design": "^0.1.11"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "7.4.2",
